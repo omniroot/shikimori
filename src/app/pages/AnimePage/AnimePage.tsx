@@ -16,6 +16,7 @@ import {
 	AnimeStatusSelect,
 	animeStatusSelectOptions,
 } from "@features/AnimeStatusSelect/AnimeStatusSelect";
+import { Tooltip } from "@ui/Tooltip/Tooltip";
 
 export const AnimePage = () => {
 	const { animeId } = useParams();
@@ -49,9 +50,12 @@ export const AnimePage = () => {
 					</AnimeInfoLine>
 					<div className={styles.genres_list}>
 						{anime?.genres?.map((genre) => (
-							<div key={genre.id} className={styles.genre}>
-								{genre.name}
-							</div>
+							<Tooltip
+								key={genre.id}
+								title="ну умер и умер, чё бубнить-то?ну умер и умер, чё бубнить-то?"
+							>
+								<div className={styles.genre}>{genre.name}</div>
+							</Tooltip>
 						))}
 					</div>
 				</div>

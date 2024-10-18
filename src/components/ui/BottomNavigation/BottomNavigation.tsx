@@ -1,20 +1,39 @@
-import type { FC, ReactNode } from "react";
+import { ProfileIcon, AnimeIcon, SearchIcon, SettingsIcon, LogoutIcon } from "@/shared/icons";
+import { NavBar } from "@features/NavBar/NavBar";
+import styles from "./BottomNavigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./NavBar.module.scss";
 import clsx from "clsx";
 
-interface IPage {
-	name: string;
-	path: string;
-	icon?: ReactNode;
-}
-interface INavBarProps {
-	pages: IPage[];
-}
+const pages = [
+	{
+		name: "Profile",
+		path: "/",
+		icon: <ProfileIcon />,
+	},
+	{
+		name: "Animes",
+		path: "/animes/",
+		icon: <AnimeIcon width={24} height={22} />,
+	},
+	{
+		name: "Search",
+		path: "/search",
+		icon: <SearchIcon />,
+	},
+	{
+		name: "Settings",
+		path: "/settings",
+		icon: <SettingsIcon />,
+	},
+	{
+		name: "Logout",
+		path: "/logout",
+		icon: <LogoutIcon />,
+	},
+];
 
-export const NavBar: FC<INavBarProps> = ({ pages }) => {
+export const BottomNavigation = () => {
 	const currentPage = useLocation().pathname;
-
 	const isCurrentPage = (page: IPage) => {
 		// console.log(currentLink, page.path);
 		const _currentPage = currentPage.split("/")[1].replaceAll("/", "");
@@ -27,9 +46,8 @@ export const NavBar: FC<INavBarProps> = ({ pages }) => {
 		console.log(_currentPage, _nextPage, "===> false");
 		return false;
 	};
-
 	return (
-		<div className={styles.navbar}>
+		<div className={styles.bottom_navigation}>
 			{pages.map((page) => {
 				if (isCurrentPage(page)) {
 					return (

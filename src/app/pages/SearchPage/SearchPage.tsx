@@ -6,7 +6,6 @@ import { useSearchAnime } from "@/shared/hooks/useSearchAnime";
 import { AnimeCard } from "@features/AnimeCard/AnimeCard";
 import { AnimeList } from "@features/AnimeList/AnimeList";
 
-
 export const SearchPage = () => {
 	const { setRightSidebarContent, toggleRightSidebar } = useGlobalStore(
 		(state) => state,
@@ -39,10 +38,11 @@ export const SearchPage = () => {
 			<form className={styles.search_form} onSubmit={onSearchFormSubmit}>
 				<div className={styles.left}>
 					<SearchIcon className={styles.search_icon} width={24} height={24} />
-					<div className={styles.placeholder}>Name:</div>
+					{/* <div className={styles.placeholder}>Name:</div> */}
 					<input
 						type="text"
 						className={styles.search_input}
+						placeholder="Name:"
 						onChange={onSearchInputChange}
 					/>
 				</div>
@@ -52,7 +52,6 @@ export const SearchPage = () => {
 						onClick={toggleRightSidebar}
 						className={styles.filter_button}
 					>
-						{" "}
 						<FilterIcon width={24} height={24} />
 						filters
 					</button>
